@@ -250,67 +250,72 @@ export default {
       this.nodes = nodes.map((node, index) => {
         if (node.name !== "Environment") {
           switch (node.labels[1]) {
-            // case "ns5__Quote":
-            //   node.name = node.properties.ns1__hasName;
-            //   break;
-            // case "ns6__TenureInOrganization":
-            //   node.name=node.properties[];
-            case "ns0__Organization":
-              node.name = node.properties["ns3__organization-name"];
+            case "ns8__TenureInOrganization":
+              node.name = node.properties.ns1__from
+              if(node.properties.ns1__to!=null)
+              {
+                node.name+='to '+node.properties.ns1__to;
+              }
               break;
-            // case "ns5__Instrument":
-            //   node.name = node.properties.ns1__hasName;
-            //   break;
-            case "ns5__AssetClass":
+            case "ns0__Quote":
+              node.name = node.properties.ns1__hasName;
+              break;
+            case "ns4__Organization":
+              node.name = node.properties["ns6__organization-name"];
+              break;
+            case "ns0__Instrument":
+              node.name = node.properties.ns1__hasName;
+              break;
+            case "ns0__AssetClass":
               node.name = node.properties.rdfs__label;
               break;
-            case "ns8__Currency":
+            case "ns2__Currency":
               node.name = node.properties.skos__prefLabel;
               break;
-            case "ns8__CurrencySubunit":
+            case "ns2__CurrencySubunit":
               node.name = node.properties.skos__prefLabel;
               break;
-            case "ns9__Activity":
+            case "ns3__Activity":
               node.name = node.properties.skos__prefLabel;
               break;
-            case "ns9__BusinessSector":
+            case "ns3__BusinessSector":
               node.name = node.properties.skos__prefLabel;
               break;
-            case "ns9__EconomicSector":
+            case "ns3__EconomicSector":
               node.name = node.properties.skos__prefLabel;
               break;
-            case "ns9__BusinessClassification":
+            case "ns3__BusinessClassification":
               node.name = node.properties.skos__prefLabel;
               break;
-            case "ns9__Industry":
+            case "ns3__Industry":
               node.name = node.properties.skos__prefLabel;
               break;
-            case "ns6__AcademicQualification":
-              node.name = node.properties.ns6__fromInstitutionName;
+            case "ns8__AcademicQualification":
+              node.name = node.properties.ns8__fromInstitutionName;
               break;
-            case "ns6__Officership":
-              node.name = node.properties.ns6__hasReportedTitle;
+            case "ns8__Officership":
+              node.name = node.properties.ns8__hasReportedTitle;
               break;
-            case "ns6__Person":
-              node.name = node.properties["ns3__given-name"]+node.properties["ns3__family-name"];
+            case "ns8__Person":
+              node.name = node.properties["ns6__given-name"]+node.properties["ns6__family-name"];
               break;
-            case "ns9__IndustryGroup":
+            case "ns3__IndustryGroup":
               node.name = node.properties.skos__prefLabel;
               break;
-            case "ns6__Major":
+            case "ns8__Major":
               node.name = node.properties.skos__prefLabel;
               break;
-            case "ns6__AcademicDegree":
+            case "ns8__AcademicDegree":
               node.name = node.properties.skos__prefLabel;
               break;
-            case "ns6__OfficerRole":
+            case "ns8__OfficerRole":
               node.name = node.properties.skos__prefLabel;
               break;
-            case "ns6__DirectorRole":
+            case "ns8__DirectorRole":
               node.name = node.properties.skos__prefLabel;
               break;
-            case "ns6__Directorship":
-              node.name = node.properties.ns6__hasReportedTitle;
+            case "ns8__Directorship":
+              node.name = node.properties.ns8__hasReportedTitle;
               break;
             case "null":
               node.namee=node.properties.uri;
@@ -482,6 +487,9 @@ export default {
     linkClick(event, link) {
       this.$emit("link-click", event, link);
     },
+    // nodedbclick(event, node){
+    //   this.$emit("node-dbclick",event,node);
+    // },
     setMouseOffset(event, node) {
       let x = 0;
       let y = 0;
